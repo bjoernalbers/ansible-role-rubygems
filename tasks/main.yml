@@ -1,2 +1,14 @@
 ---
-# tasks file for bjoernalbers.rubygems
+- name: update rubygems
+  command: gem update --system {{ rubygems_args }}
+  become: yes
+  become_user: root
+  register: gem_update
+  changed_when: '"Successfully installed rubygems-update" in gem_update.stdout'
+
+- name: install bundler
+  command: gem install bundler {{ rubygems_args }}
+  become: yes
+  become_user: root
+  register: gem_install
+  changed_when: 'gem_install.stdout | search("GET.*bundler.*gem")'

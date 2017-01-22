@@ -1,2 +1,2 @@
 ---
-# vars file for bjoernalbers.rubygems
+rubygems_args: --no-document --verbose --bindir /usr/local/bin
